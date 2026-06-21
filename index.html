@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="پورتفولیوی ممد تیموری — توسعه‌دهنده فول‌استک و طراح UI/UX">
+  <meta name="theme-color" content="#fafaf9">
+  <title>ممد تیموری — توسعه‌دهنده فول‌استک</title>
+
+  <!-- Google Fonts: Vazirmatn for Persian, Inter for English fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon: geometric shape matching the Three.js hero -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 28,10 28,22 16,30 4,22 4,10' fill='%23e8590c'/%3E%3C/svg%3E" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- ============================================================
+       LOADING SCREEN — animated logo reveal, 2.5s duration
+       ============================================================ -->
+  <div id="loader" class="loader" aria-hidden="false">
+    <div class="loader__inner">
+      <div class="loader__logo">
+        <span class="loader__logo-letter" style="--i:1">d</span>
+        <span class="loader__logo-letter" style="--i:2">a</span>
+        <span class="loader__logo-letter" style="--i:3">m</span>
+        <span class="loader__logo-letter" style="--i:4">a</span>
+        <span class="loader__logo-letter" style="--i:5">m</span>
+        <span class="loader__logo-letter loader__logo-sep" style="--i:6">.</span>
+        <span class="loader__logo-letter" style="--i:7">v</span>
+        <span class="loader__logo-letter" style="--i:8">e</span>
+        <span class="loader__logo-letter" style="--i:9">d</span>
+      </div>
+      <div class="loader__progress">
+        <div class="loader__bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CUSTOM CURSOR — follows mouse with smooth delay
+       ============================================================ -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ============================================================
+       NAVIGATION — fixed top-right hamburger, full-page blur overlay
+       ============================================================ -->
+  <header id="navbar" class="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand">
+        <span class="nav__logo-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
+          </svg>
+        </span>
+        <span>ممد تیموری</span>
+      </a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="باز کردن منو" aria-expanded="false" aria-controls="navOverlay">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Full-page overlay menu — GSAP stagger animated links -->
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="منوی ناوبری">
+    <nav class="nav__menu" id="navMenu">
+      <ul class="nav__links">
+        <li class="nav__link-item"><a href="#hero" class="nav__link" data-index="0"><span class="nav__link-num">01</span>خانه</a></li>
+        <li class="nav__link-item"><a href="#about" class="nav__link" data-index="1"><span class="nav__link-num">02</span>درباره من</a></li>
+        <li class="nav__link-item"><a href="#skills" class="nav__link" data-index="2"><span class="nav__link-num">03</span>مهارت‌ها</a></li>
+        <li class="nav__link-item"><a href="#portfolio" class="nav__link" data-index="3"><span class="nav__link-num">04</span>نمونه‌کارها</a></li>
+        <li class="nav__link-item"><a href="#contact" class="nav__link" data-index="4"><span class="nav__link-num">05</span>تماس</a></li>
+      </ul>
+      <div class="nav__menu-footer">
+        <a href="mailto:info@mamad.dev" class="nav__menu-email" dir="ltr">info@mamad.dev</a>
+        <div class="nav__menu-socials">
+          <a href="#" aria-label="گیت‌هاب" class="nav__social">GitHub</a>
+          <a href="#" aria-label="لینکدین" class="nav__social">LinkedIn</a>
+          <a href="#" aria-label="توییتر" class="nav__social">Twitter</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main>
+
+    <!-- ======================== HERO ======================== -->
+    <!-- Three.js canvas mounted here for 3D shape + particles -->
+    <section id="hero" class="hero">
+      <div class="hero__canvas-container" id="heroCanvasContainer"></div>
+      <div class="hero__content">
+        <!-- Text column — right side (RTL) -->
+        <div class="hero__text-col">
+          <div class="hero__tag" id="heroTag">
+            <span class="hero__tag-dot" aria-hidden="true"></span>
+            <span>توسعه‌دهنده فول‌استک</span>
+          </div>
+          <h1 class="hero__title" id="heroTitle">
+            <span class="hero__title-line">سایت‌هایی که</span>
+            <span class="hero__title-line"><span class="hero__title-accent">تأثیر</span> می‌ذارن</span>
+          </h1>
+          <p class="hero__subtitle" id="heroSubtitle">
+            طراحی و توسعه وب با تمرکز بر تجربه کاربری، پرفورمنس، و جزئیاتی که تفاوت ایجاد می‌کنن.
+          </p>
+          <div class="hero__actions" id="heroActions">
+            <a href="#portfolio" class="btn btn--primary">
+              <span>نمونه‌کارها</span>
+              <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 2L4 8l6 6"/>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn--outline">
+              <span>تماس با من</span>
+            </a>
+          </div>
+        </div>
+        <!-- Spacer for 3D computer — left side -->
+        <div class="hero__canvas-spacer" aria-hidden="true"></div>
+      </div>
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <span>اسکرول</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ======================== ABOUT ======================== -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__text" data-gsap="fade-up">
+            <span class="section__label">درباره من</span>
+            <h2 class="section__heading">
+              ترکیب <span class="text-accent">کد تمیز</span> با
+              <span class="text-accent">طراحی هوشمند</span>
+            </h2>
+            <p class="about__desc">
+              من ممد تیموری هستم، توسعه‌دهنده فول‌استک با بیش از ۵ سال تجربه در ساخت
+              اپلیکیشن‌های وب مدرن. از فرانت‌اند تا بک‌اند، از طراحی UI تا بهینه‌سازی
+              پرفورمنس — هر لایه‌ای که نیاز باشه.
+            </p>
+            <p class="about__desc">
+              معتقدم بهترین محصولاتی که ساخته شدن، اونایی بودن که هم از نظر فنی قوی بودن
+              و هم از نظر بصری جذاب. هدفم همینه: جایی که مهندسی و طراحی بهم می‌رسن.
+            </p>
+            <div class="about__stats">
+              <div class="stat" data-gsap="fade-up">
+                <span class="stat__number">۵+</span>
+                <span class="stat__label">سال تجربه</span>
+              </div>
+              <div class="stat" data-gsap="fade-up">
+                <span class="stat__number">۴۰+</span>
+                <span class="stat__label">پروژه تکمیل‌شده</span>
+              </div>
+              <div class="stat" data-gsap="fade-up">
+                <span class="stat__number">۱۲</span>
+                <span class="stat__label">مشتری تکراری</span>
+              </div>
+            </div>
+          </div>
+          <div class="about__visual" data-gsap="fade-left">
+            <div class="about__code-card">
+              <div class="about__code-header">
+                <span class="about__code-dot" style="--c:#ff5f57"></span>
+                <span class="about__code-dot" style="--c:#ffbd2e"></span>
+                <span class="about__code-dot" style="--c:#28ca42"></span>
+                <span class="about__code-filename">developer.js</span>
+              </div>
+              <pre class="about__code-body"><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+  <span class="code-key">name</span>: <span class="code-str">"ممد تیموری"</span>,
+  <span class="code-key">role</span>: <span class="code-str">"Full-Stack Dev"</span>,
+  <span class="code-key">loves</span>: [<span class="code-str">"Clean Code"</span>, <span class="code-str">"UI/UX"</span>],
+  <span class="code-fn">build</span>() {
+    <span class="code-kw">return</span> <span class="code-str">"something awesome"</span>;
+  }
+};</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== SKILLS ======================== -->
+    <section id="skills" class="skills section">
+      <div class="container">
+        <div class="skills__inner">
+          <div class="skills__header" data-gsap="fade-up">
+            <span class="section__label">مهارت‌ها</span>
+            <h2 class="section__heading">ابزارهایی که <span class="text-accent">بلدم</span></h2>
+          </div>
+
+          <!-- Skills grid — populated dynamically from localStorage -->
+          <div class="skills__grid" id="skillsGrid">
+            <!-- Each skill card rendered by JS from localStorage data -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PORTFOLIO ======================== -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container">
+        <div class="portfolio__header" data-gsap="fade-up">
+          <span class="section__label">نمونه‌کارها</span>
+          <h2 class="section__heading">پروژه‌هایی که <span class="text-accent">ساختم</span></h2>
+        </div>
+
+        <!-- Portfolio grid — populated dynamically from localStorage -->
+        <div class="portfolio__grid" id="portfolioGrid">
+          <!-- Each project card rendered by JS from localStorage data -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== CONTACT ======================== -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__info" data-gsap="fade-up">
+            <span class="section__label">تماس</span>
+            <h2 class="section__heading">بیایید <span class="text-accent">گپ بزنیم</span></h2>
+            <p class="contact__desc">
+              پروژه‌ای تو ذهنته؟ یا فقط می‌خوای سلام کنی؟
+              <br>هر وقت آماده‌ای، من اینجام.
+            </p>
+            <ul class="contact__details">
+              <li>
+                <span class="contact__detail-label">ایمیل</span>
+                <a href="mailto:info@mamad.dev" class="contact__detail-value" dir="ltr">info@mamad.dev</a>
+              </li>
+              <li>
+                <span class="contact__detail-label">تلفن</span>
+                <a href="tel:+989123456789" class="contact__detail-value" dir="ltr">۰۹۱۲ ۳۴۵ ۶۷۸۹</a>
+              </li>
+              <li>
+                <span class="contact__detail-label">موقعیت</span>
+                <span class="contact__detail-value">تهران، ایران</span>
+              </li>
+            </ul>
+          </div>
+          <form class="contact__form" id="contactForm" novalidate data-gsap="fade-left">
+            <div class="form__field">
+              <label for="contactName" class="form__label">اسمت چیه؟</label>
+              <input type="text" id="contactName" name="name" class="form__input" placeholder="مثلاً علی" required autocomplete="name">
+              <span class="form__error" id="nameError"></span>
+            </div>
+            <div class="form__field">
+              <label for="contactEmail" class="form__label">ایمیلت</label>
+              <input type="email" id="contactEmail" name="email" class="form__input" placeholder="ali@example.com" required autocomplete="email" dir="ltr">
+              <span class="form__error" id="emailError"></span>
+            </div>
+            <div class="form__field">
+              <label for="contactMessage" class="form__label">پیامت</label>
+              <textarea id="contactMessage" name="message" class="form__input form__textarea" placeholder="هر چی تو ذهنته..." rows="5" required></textarea>
+              <span class="form__error" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--submit" id="submitBtn">
+              <span class="btn__text">ارسال پیام</span>
+              <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2L7 9M14 2l-4 12-3-5-5-3 12-4z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">© ۱۴۰۴ ممد تیموری — ساخته‌شده با کد تمیز و چای زیاد.</p>
+        <div class="footer__links">
+          <a href="#" class="footer__link">GitHub</a>
+          <a href="#" class="footer__link">LinkedIn</a>
+          <a href="#" class="footer__link">Twitter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS — GSAP + Three.js from CDN
+       ============================================================ -->
+  <!-- GSAP core + plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js" defer></script>
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <!-- Main application logic -->
+  <script src="main.js" defer></script>
+</body>
+</html>
