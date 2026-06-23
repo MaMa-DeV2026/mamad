@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="پنل مدیریت پورتفولیو">
+  <meta name="description" content="mamad_dev Portfolio Admin Panel">
   <meta name="theme-color" content="#1c1917">
-  <title>پنل مدیریت — ممد تیموری</title>
+  <title>Admin Panel — mamad_dev</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,23 +25,23 @@
           <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
         </svg>
       </div>
-      <h1 class="login__title">ورود به پنل مدیریت</h1>
-      <p class="login__subtitle">نام کاربری و رمز عبور رو وارد کن</p>
+      <h1 class="login__title">Admin Login</h1>
+      <p class="login__subtitle">Enter your username and password</p>
 
       <form id="loginForm" novalidate>
         <div class="form__field">
-          <label for="loginUser" class="form__label">نام کاربری</label>
+          <label for="loginUser" class="form__label">Username</label>
           <input type="text" id="loginUser" name="username" class="form__input" placeholder="admin" required autocomplete="username" dir="ltr">
           <span class="form__error" id="loginUserError"></span>
         </div>
         <div class="form__field">
-          <label for="loginPass" class="form__label">رمز عبور</label>
+          <label for="loginPass" class="form__label">Password</label>
           <input type="password" id="loginPass" name="password" class="form__input" placeholder="••••••••" required autocomplete="current-password" dir="ltr">
           <span class="form__error" id="loginPassError"></span>
         </div>
         <div id="loginGlobalError" class="login__error" aria-live="polite"></div>
         <button type="submit" class="btn btn--primary btn--full" id="loginBtn">
-          <span class="btn__text">ورود</span>
+          <span class="btn__text">Login</span>
         </button>
       </form>
     </div>
@@ -59,17 +59,17 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
           </svg>
-          <span>پنل مدیریت</span>
+          <span>Admin Panel</span>
         </div>
         <div class="admin-topbar__actions">
           <a href="../index.html" class="admin-topbar__link" target="_blank" rel="noopener">
-            مشاهده سایت
+            View Website
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M6 2H2v4M14 2L9 7M9 2h5v5"/>
             </svg>
           </a>
           <button class="btn btn--sm btn--outline" id="logoutBtn">
-            <span>خروج</span>
+            <span>Logout</span>
           </button>
         </div>
       </div>
@@ -86,31 +86,31 @@
               <rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/>
               <rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/>
             </svg>
-            <span>پروژه‌ها</span>
+            <span>Projects</span>
           </button>
           <button class="admin-tab" data-tab="skills" role="tab" aria-selected="false" aria-controls="tabSkills">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M2 14V8l4-4 4 4 4-6"/>
             </svg>
-            <span>مهارت‌ها</span>
+            <span>Skills</span>
           </button>
           <button class="admin-tab" data-tab="messages" role="tab" aria-selected="false" aria-controls="tabMessages">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M14 2H2l2 9h8l2-9z"/><path d="M2 13h12"/>
             </svg>
-            <span>پیام‌ها</span>
+            <span>Messages</span>
           </button>
         </div>
 
         <!-- ==================== PROJECTS TAB ==================== -->
         <div class="admin-panel active" id="tabProjects" role="tabpanel">
           <div class="admin-panel__header">
-            <h2 class="admin-panel__title">مدیریت پروژه‌ها</h2>
+            <h2 class="admin-panel__title">Manage Projects</h2>
             <button class="btn btn--primary btn--sm" id="addProjectBtn">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
                 <path d="M8 2v12M2 8h12"/>
               </svg>
-              <span>پروژه جدید</span>
+              <span>New Project</span>
             </button>
           </div>
 
@@ -122,7 +122,7 @@
         <!-- ==================== SKILLS TAB ==================== -->
         <div class="admin-panel" id="tabSkills" role="tabpanel" hidden>
           <div class="admin-panel__header">
-            <h2 class="admin-panel__title">مدیریت مهارت‌ها</h2>
+            <h2 class="admin-panel__title">Manage Skills</h2>
           </div>
 
           <div id="skillsList" class="skills-list">
@@ -133,7 +133,7 @@
         <!-- ==================== MESSAGES TAB ==================== -->
         <div class="admin-panel" id="tabMessages" role="tabpanel" hidden>
           <div class="admin-panel__header">
-            <h2 class="admin-panel__title">پیام‌های دریافتی</h2>
+            <h2 class="admin-panel__title">Received Messages</h2>
           </div>
 
           <div id="messagesList" class="messages-list">
@@ -152,8 +152,8 @@
     <div class="modal__backdrop" id="projectModalBackdrop"></div>
     <div class="modal__content">
       <div class="modal__header">
-        <h3 class="modal__title" id="modalTitle">پروژه جدید</h3>
-        <button class="modal__close" id="modalClose" aria-label="بستن">
+        <h3 class="modal__title" id="modalTitle">New Project</h3>
+        <button class="modal__close" id="modalClose" aria-label="Close">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <path d="M4 4l12 12M16 4L4 16"/>
           </svg>
@@ -162,32 +162,32 @@
       <form id="projectForm" novalidate>
         <input type="hidden" id="projId">
         <div class="form__field">
-          <label for="projTitle" class="form__label">عنوان پروژه</label>
-          <input type="text" id="projTitle" class="form__input" placeholder="مثلاً فروشگاه آنلاین" required>
+          <label for="projTitle" class="form__label">Project Title</label>
+          <input type="text" id="projTitle" class="form__input" placeholder="e.g. Online Store" required>
           <span class="form__error" id="projTitleError"></span>
         </div>
         <div class="form__field">
-          <label for="projDesc" class="form__label">توضیحات</label>
-          <textarea id="projDesc" class="form__input form__textarea" placeholder="یه توضیح کوتاه درباره پروژه..." rows="3" required></textarea>
+          <label for="projDesc" class="form__label">Description</label>
+          <textarea id="projDesc" class="form__input form__textarea" placeholder="A brief description of the project..." rows="3" required></textarea>
           <span class="form__error" id="projDescError"></span>
         </div>
         <div class="form__field">
-          <label for="projTags" class="form__label">تگ‌ها (با کاما جدا کن)</label>
-          <input type="text" id="projTags" class="form__input" placeholder="وب‌سایت, React, Tailwind" dir="ltr">
+          <label for="projTags" class="form__label">Tags (comma-separated)</label>
+          <input type="text" id="projTags" class="form__input" placeholder="Website, React, Tailwind" dir="ltr">
         </div>
         <div class="form__field">
-          <label for="projImage" class="form__label">آدرس تصویر</label>
+          <label for="projImage" class="form__label">Image URL</label>
           <input type="text" id="projImage" class="form__input" placeholder="https://example.com/image.png" dir="ltr">
-          <span class="form__hint">آدرس URL تصویر یا بذار خالی برای تصویر پیش‌فرض</span>
+          <span class="form__hint">Image URL or leave empty for default</span>
         </div>
         <div class="form__field">
-          <label for="projLink" class="form__label">لینک پروژه</label>
+          <label for="projLink" class="form__label">Project Link</label>
           <input type="text" id="projLink" class="form__input" placeholder="https://example.com" dir="ltr">
         </div>
         <div class="modal__actions">
-          <button type="button" class="btn btn--outline" id="modalCancel">انصراف</button>
+          <button type="button" class="btn btn--outline" id="modalCancel">Cancel</button>
           <button type="submit" class="btn btn--primary" id="modalSave">
-            <span class="btn__text">ذخیره</span>
+            <span class="btn__text">Save</span>
           </button>
         </div>
       </form>

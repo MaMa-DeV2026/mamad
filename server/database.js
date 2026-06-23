@@ -102,11 +102,11 @@ function seedDatabase() {
   const skillCount = db.exec('SELECT COUNT(*) as count FROM skills');
   if (skillCount[0] && skillCount[0].values[0][0] === 0) {
     const skills = [
-      ['ui-ux', 'طراحی UI/UX', 92, 0],
+      ['ui-ux', 'UI/UX Design', 92, 0],
       ['html-css', 'HTML & CSS', 95, 1],
       ['javascript', 'JavaScript', 80, 2],
       ['figma', 'Figma', 88, 3],
-      ['responsive', 'طراحی ریسپانسیو', 90, 4],
+      ['responsive', 'Responsive Design', 90, 4],
       ['adobe-xd', 'Adobe XD', 75, 5],
     ];
 
@@ -122,32 +122,32 @@ function seedDatabase() {
     const projects = [
       [
         'proj-1',
-        'Lumina — پنل مدیریت SaaS',
-        'طراحی رابط کاربری برای یک پنل تحلیل داده با قابلیت نمایش اطلاعات لحظه‌ای و پشتیبانی از حالت تاریک.',
+        'Lumina — SaaS Dashboard',
+        'UI design for a data analytics dashboard with real-time information display and dark mode support.',
         JSON.stringify(['Figma', 'UI/UX', 'CSS']),
         'https://cdn.dribbble.com/userupload/43111624/file/original-52851378199548dd20f80f06ed4448b3.png?format=webp&resize=1000x750&vertical=center',
         '#'
       ],
       [
         'proj-2',
-        'Bloom — فروشگاه آنلاین گل',
-        'طراحی تجربه کاربری کامل برای یک فروشگاه اینترنتی با رویکرد موبایل‌فرست و انیمیشن‌های روان.',
+        'Bloom — Online Flower Shop',
+        'Complete UX design for an e-commerce store with mobile-first approach and smooth animations.',
         JSON.stringify(['HTML', 'CSS', 'JavaScript']),
         'https://cdn.dribbble.com/userupload/37233954/file/original-bbded23d0654a44bcdf825cc541142ef.png?format=webp&resize=800x600&vertical=center',
         '#'
       ],
       [
         'proj-3',
-        'Forge — وب‌سایت آژانس دیجیتال',
-        'طراحی وب‌سایت معرفی برای یک آژانس دیجیتال با تمرکز بر تجربه اسکرول و هویت بصری قوی.',
+        'Forge — Digital Agency Website',
+        'Landing page design for a digital agency with focus on scroll experience and strong visual identity.',
         JSON.stringify(['Figma', 'GSAP', 'CSS']),
         'https://cdn.dribbble.com/userupload/44350275/file/6eea7358e580c7821da3b941d08bb92d.png?format=webp&resize=1000x750&vertical=center',
         '#'
       ],
       [
         'proj-4',
-        'Zeno — وبلاگ شخصی',
-        'طراحی وبلاگ با رویکرد محتوامحور، خوانایی بالا و سرعت بارگذاری بهینه.',
+        'Zeno — Personal Blog',
+        'Content-focused blog design with high readability and optimized loading speed.',
         JSON.stringify(['UI Design', 'Typography', 'CSS']),
         'https://cdn.dribbble.com/userupload/8449020/file/original-86e598825b4c6e3b77afccfc3a37247c.png?resize=2048x1536&vertical=center',
         '#'

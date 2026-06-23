@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="پورتفولیوی mamad dev — طراح وب و متخصص تجربه کاربری">
+  <meta name="description" content="Professional web design and development by mamad_dev. Professional Quality, Fair Price.">
   <meta name="theme-color" content="#fafaf9">
-  <title>mamad dev — طراح وب</title>
+  <title>mamad_dev | طراحی حرفه‌ای وب</title>
 
   <!-- Google Fonts: Vazirmatn for Persian, Inter for English fallback -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,23 +16,58 @@
 
   <!-- Favicon: geometric shape matching the Three.js hero -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 28,10 28,22 16,30 4,22 4,10' fill='%23e8590c'/%3E%3C/svg%3E" type="image/svg+xml">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "mamad_dev",
+    "description": "Professional web design and development. Professional Quality, Fair Price.",
+    "url": "https://mamadweb.netlify.app",
+    "areaServed": "Worldwide",
+    "serviceType": "Web Design and Development"
+  }
+  </script>
+
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="mamad_dev | Professional Web Design" />
+  <meta property="og:description" content="Professional Quality, Fair Price" />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mamadweb.netlify.app" />
+
+  <!-- GA4 placeholder - uncomment and replace YOUR_GA4_ID after creating a free account at analytics.google.com -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA4_ID');
+  </script>
+  -->
+
+  <!-- Skip to main content link -->
+  <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
 </head>
 <body>
 
   <!-- ============================================================
-       LOADING SCREEN — animated logo reveal, 2.5s duration
+       LOADING SCREEN — animated logo reveal, 0.5s duration
        ============================================================ -->
   <div id="loader" class="loader" aria-hidden="false">
     <div class="loader__inner">
       <div class="loader__logo">
         <span class="loader__logo-letter" style="--i:1">d</span>
-        <span class="loader__logo-letter" style="--i:2">a</span>
-        <span class="loader__logo-letter" style="--i:3">m</span>
-        <span class="loader__logo-letter" style="--i:4">a</span>
-        <span class="loader__logo-letter" style="--i:5">m</span>
-        <span class="loader__logo-letter loader__logo-sep" style="--i:6">.</span>
-        <span class="loader__logo-letter" style="--i:7">v</span>
-        <span class="loader__logo-letter" style="--i:8">e</span>
+        <span class="loader__logo-letter" style="--i:2">e</span>
+        <span class="loader__logo-letter" style="--i:3">v</span>
+         <span class="loader__logo-letter loader__logo-sep" style="--i:6">_</span>
+        <span class="loader__logo-letter" style="--i:4">d</span>
+        <span class="loader__logo-letter" style="--i:5">a</span>
+        <span class="loader__logo-letter" style="--i:7">m</span>
+        <span class="loader__logo-letter" style="--i:8">a</span>
         <span class="loader__logo-letter" style="--i:9">d</span>
       </div>
       <div class="loader__progress">
@@ -45,14 +80,6 @@
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ============================================================
-       CUSTOM CURSOR — follows mouse with smooth delay
-       ============================================================ -->
-  <div class="cursor" id="cursor" aria-hidden="true">
-    <div class="cursor__dot"></div>
-    <div class="cursor__ring"></div>
-  </div>
-
-  <!-- ============================================================
        NAVIGATION — fixed top-right hamburger, full-page blur overlay
        ============================================================ -->
   <header id="navbar" class="nav">
@@ -63,9 +90,9 @@
             <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
           </svg>
         </span>
-        <span>mamad dev</span>
+        <span>mamad_dev</span>
       </a>
-      <button class="nav__hamburger" id="navHamburger" aria-label="باز کردن منو" aria-expanded="false" aria-controls="navOverlay">
+      <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
         <span class="nav__hamburger-line"></span>
         <span class="nav__hamburger-line"></span>
         <span class="nav__hamburger-line"></span>
@@ -74,21 +101,22 @@
   </header>
 
   <!-- Full-page overlay menu — GSAP stagger animated links -->
-  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="منوی ناوبری">
+  <div class="nav__overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-label="Navigation menu">
     <nav class="nav__menu" id="navMenu">
       <ul class="nav__links">
-        <li class="nav__link-item"><a href="#hero" class="nav__link" data-index="0"><span class="nav__link-num">01</span>خانه</a></li>
-        <li class="nav__link-item"><a href="#about" class="nav__link" data-index="1"><span class="nav__link-num">02</span>درباره من</a></li>
-        <li class="nav__link-item"><a href="#skills" class="nav__link" data-index="2"><span class="nav__link-num">03</span>مهارت‌ها</a></li>
-        <li class="nav__link-item"><a href="#portfolio" class="nav__link" data-index="3"><span class="nav__link-num">04</span>نمونه‌کارها</a></li>
-        <li class="nav__link-item"><a href="#contact" class="nav__link" data-index="4"><span class="nav__link-num">05</span>تماس</a></li>
+        <li class="nav__link-item"><a href="#hero" class="nav__link" data-index="0"><span class="nav__link-num">۰۱</span>خانه</a></li>
+        <li class="nav__link-item"><a href="#about" class="nav__link" data-index="1"><span class="nav__link-num">۰۲</span>درباره من</a></li>
+        <li class="nav__link-item"><a href="#skills" class="nav__link" data-index="2"><span class="nav__link-num">۰۳</span>مهارت‌ها</a></li>
+        <li class="nav__link-item"><a href="#portfolio" class="nav__link" data-index="3"><span class="nav__link-num">۰۴</span>نمونه کارها</a></li>
+        <li class="nav__link-item"><a href="#contact" class="nav__link" data-index="4"><span class="nav__link-num">۰۵</span>تماس</a></li>
       </ul>
       <div class="nav__menu-footer">
-        <a href="mailto:info@mamad.dev" class="nav__menu-email" dir="ltr">info@mamad.dev</a>
+        <a href="mailto:info@mamad_dev.com" class="nav__menu-email" dir="ltr">info@mamad_dev.com</a>
         <div class="nav__menu-socials">
-          <a href="#" aria-label="گیت‌هاب" class="nav__social">GitHub</a> 
-          <a href="#" aria-label="لینکدین" class="nav__social">LinkedIn</a>
-          <a href="#" aria-label="توییتر" class="nav__social">Twitter</a>
+          <a href="https://github.com/mamad_dev" target="_blank" rel="noopener noreferrer" aria-label="گیت‌هاب" class="nav__social">گیت‌هاب</a>
+          <a href="#" aria-label="لینکدین" class="nav__social">لینکدین</a>
+          <a href="#" aria-label="توییتر" class="nav__social">توییتر</a>
+          <a href="#" aria-label="اینستاگرام" class="nav__social">اینستاگرام</a>
         </div>
       </div>
     </nav>
@@ -97,7 +125,7 @@
   <!-- ============================================================
        MAIN CONTENT
        ============================================================ -->
-  <main>
+  <main id="main-content">
 
     <!-- ======================== HERO ======================== -->
     <section id="hero" class="hero">
@@ -106,24 +134,24 @@
         <div class="hero__text-col">
           <div class="hero__tag" id="heroTag">
             <span class="hero__tag-dot" aria-hidden="true"></span>
-            <span>توسعه‌دهنده فول‌استک</span>
+            <span>طراحی حرفه‌ای وب</span>
           </div>
           <h1 class="hero__title" id="heroTitle">
-            <span class="hero__title-line">وب‌سایت‌هایی که</span>
-            <span class="hero__title-line"><span class="hero__title-accent">نتیجه</span> می‌سازند</span>
+            <span class="hero__title-line">کیفیت حرفه‌ای،</span>
+            <span class="hero__title-line"><span class="hero__title-accent">قیمت منصفانه</span></span>
           </h1>
           <p class="hero__subtitle" id="heroSubtitle">
-            طراحی وب‌سایت با تمرکز بر تجربه کاربری، عملکرد فنی، و دقت در جزئیات — از ایده تا اجرا.
+            طراحی و توسعه وب حرفه‌ای — از ایده تا اجرا. کد با کیفیت، طراحی چشم‌نواز و پشتیبانی نامحدود.
           </p>
           <div class="hero__actions" id="heroActions">
             <a href="#portfolio" class="btn btn--primary">
-              <span>نمونه‌کارها</span>
+              <span>مشاهده نمونه کارها</span>
               <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M10 2L4 8l6 6"/>
               </svg>
             </a>
             <a href="#contact" class="btn btn--outline">
-              <span>ارسال پیام</span>
+              <span>درخواست مشاوره رایگان</span>
             </a>
           </div>
         </div>
@@ -143,49 +171,265 @@
           <div class="about__text" data-gsap="fade-up">
             <span class="section__label">درباره من</span>
             <h2 class="section__heading">
-              طراحی <span class="text-accent">هدفمند</span> با
-              <span class="text-accent">دقت فنی</span>
+              طراحی و توسعه <span class="text-accent">وب حرفه‌ای</span>
             </h2>
             <p class="about__desc">
-              mamad dev هستم، طراح وب با بیش از چهار سال تجربه در طراحی و پیاده‌سازی
-              رابط‌های کاربری وب. تمرکز اصلی من بر خلق تجربه‌هایی است که هم از نظر بصری
-              مؤثر باشند و هم از نظر فنی بهینه و قابل نگهداری.
+              من mamad_dev هستم — یک طراح و توسعه‌دهنده با اشتیاق به ساختن تجربه‌های زیبا و کاربردی. باور دارم که هر پروژه یک داستان منحصربه‌فرد دارد و اینجا هستم تا آن را به بهترین شکل ممکن روایت کنم. تعهد من به کیفیت و پشتیبانی نامحدود همان چیزی است که مرا متمایز می‌کند.
             </p>
             <p class="about__desc">
-              باور دارم که طراحی وب تنها زیبایی ظاهری نیست — بلکه ایجاد مسیری واضح
-              برای کاربر، از لحظه ورود تا رسیدن به هدف. هر پیکسل باید دلیل داشته باشد
-              و هر تعامل باید معنا داشته باشد.
+              از وب‌سایت‌های واکنش‌گرا تا اپلیکیشن‌های فول‌استک، راه‌حل‌هایی ارائه می‌دهم که زیبایی‌شناسی چشم‌نواز را با کد تمیز و قابل نگهداری ترکیب می‌کنند. هر پروژه توجه کامل و تعهد من به تعالی را دریافت می‌کند.
             </p>
             <div class="about__stats">
               <div class="stat" data-gsap="fade-up">
                 <span class="stat__number">۴+</span>
-                <span class="stat__label">سال تجربه</span>
+                <span class="stat__label">سال تجربه برنامه‌نویسی</span>
               </div>
               <div class="stat" data-gsap="fade-up">
-                <span class="stat__number">۳۵+</span>
-                <span class="stat__label">پروژه تکمیل‌شده</span>
+                <span class="stat__number">۸</span>
+                <span class="stat__label">پروژه موفق</span>
               </div>
               <div class="stat" data-gsap="fade-up">
-                <span class="stat__number">۱۰</span>
-                <span class="stat__label">مشتری ثابت</span>
+                <span class="stat__number">۱۰۰٪</span>
+                <span class="stat__label">رضایت مشتری</span>
               </div>
             </div>
+            <!-- TODO: add real resume file -->
+            <a href="/assets/mamad_dev-resume.pdf" download class="btn btn--primary btn-resume">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2v8M4 7l4 4 4-4M2 13h12"/>
+              </svg>
+              دانلود رزومه (PDF)
+            </a>
           </div>
           <div class="about__visual" data-gsap="fade-left">
+            <!-- TODO: replace with actual logo/avatar and convert to WebP with Squoosh -->
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="mamad_dev - طراح و توسعه‌دهنده وب" class="about__avatar" loading="lazy">
             <div class="about__code-card">
               <div class="about__code-header">
                 <span class="about__code-dot" style="--c:#ff5f57"></span>
                 <span class="about__code-dot" style="--c:#ffbd2e"></span>
                 <span class="about__code-dot" style="--c:#28ca42"></span>
-                <span class="about__code-filename">designer.css</span>
+                <span class="about__code-filename">mamad_dev.js</span>
               </div>
-              <pre class="about__code-body"><code><span class="code-keyword">.designer</span> {
-  <span class="code-key">name</span>: <span class="code-str">"mamad dev"</span>;
-  <span class="code-key">focus</span>: <span class="code-str">"UI/UX Design"</span>;
-  <span class="code-key">skills</span>: [<span class="code-str">"Figma"</span>, <span class="code-str">"CSS"</span>];
-  <span class="code-key">approach</span>:
-    <span class="code-str">"purposeful design"</span>;
-}</code></pre>
+              <pre class="about__code-body"><code><span class="code-keyword">const</span> <span class="code-var">mamad_dev</span> = {
+  <span class="code-key">name</span>: <span class="code-str">"mamad_dev"</span>,
+  <span class="code-key">role</span>: <span class="code-str">"Web Designer & Developer"</span>,
+  <span class="code-key">focus</span>: <span class="code-str">"Professional Quality"</span>,
+  <span class="code-key">motto</span>: <span class="code-str">"Fair Price"</span>,
+  <span class="code-key">support</span>: <span class="code-str">"Unlimited"</span>
+};</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PROCESS / HOW I WORK ======================== -->
+    <section id="process" class="process section">
+      <div class="container">
+        <div class="process__header" data-gsap="fade-up">
+          <span class="section__label">روش کار من</span>
+          <h2 class="section__heading">فرآیند <span class="text-accent">کاری</span></h2>
+        </div>
+        <div class="process__steps">
+          <div class="process__step" data-gsap="fade-up">
+            <div class="process__step-number">۰۱</div>
+            <div class="process__step-content">
+              <h3 class="process__step-title">جلسه کشف پروژه</h3>
+              <p class="process__step-desc">اهداف، نیازمندی‌ها و دیدگاه پروژه شما را بررسی می‌کنیم تا از همان ابتدا همسو باشیم.</p>
+            </div>
+          </div>
+          <div class="process__step" data-gsap="fade-up">
+            <div class="process__step-number">۰۲</div>
+            <div class="process__step-content">
+              <h3 class="process__step-title">پیشنهاد و برآورد</h3>
+              <p class="process__step-desc">پیشنهادی جامع با زمان‌بندی، تحویل‌دهی و قیمت‌گذاری شفاف ارائه می‌دهم.</p>
+            </div>
+          </div>
+          <div class="process__step" data-gsap="fade-up">
+            <div class="process__step-number">۰۳</div>
+            <div class="process__step-content">
+              <h3 class="process__step-title">توسعه با بازخورد هفتگی</h3>
+              <p class="process__step-desc">پروژه شما را با به‌روزرسانی‌های منظم می‌سازم و بازخوردهایتان را در طول فرآیند اعمال می‌کنم.</p>
+            </div>
+          </div>
+          <div class="process__step" data-gsap="fade-up">
+            <div class="process__step-number">۰۴</div>
+            <div class="process__step-content">
+              <h3 class="process__step-title">تحویل نهایی + ۳ ماه پشتیبانی رایگان</h3>
+              <p class="process__step-desc">پروژه شما با مستندات کامل و پشتیبانی مداوم رایگان راه‌اندازی می‌شود.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== TESTIMONIALS ======================== -->
+    <section id="testimonials" class="testimonials section">
+      <div class="container">
+        <div class="testimonials__header" data-gsap="fade-up">
+          <span class="section__label">نظرات مشتریان</span>
+          <h2 class="section__heading">مشتریان <span class="text-accent">چه می‌گویند</span></h2>
+        </div>
+        <div class="testimonials__grid">
+          <div class="testimonial-card" data-gsap="fade-up">
+            <div class="testimonial-card__quote">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+            </div>
+            <p class="testimonial-card__text">"تحویل و کیفیت کار mamad_dev فراتر از انتظارات ما بود. وب‌سایت به موقع تحویل داده شد و فوق‌العاده زیبا بود."</p>
+            <div class="testimonial-card__author">
+              <strong>علی</strong>
+              <span>مدیر برند</span>
+            </div>
+          </div>
+          <div class="testimonial-card" data-gsap="fade-up">
+            <div class="testimonial-card__quote">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+            </div>
+            <p class="testimonial-card__text">"حرفه‌ای، پاسخگو و فوق‌العاده بااستعداد. فروشگاه آنلاینی که ساختند فروش مالاین ما را به طور چشمگیری افزایش داد."</p>
+            <div class="testimonial-card__author">
+              <strong>سارا</strong>
+              <span>صاحب فروشگاه آنلاین</span>
+            </div>
+          </div>
+          <div class="testimonial-card" data-gsap="fade-up">
+            <div class="testimonial-card__quote">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+            </div>
+            <p class="testimonial-card__text">"کار فوق‌العاده! توجه به جزئیات و تعهد به کیفیت قابل تحسین است. برای هر پروژه وبی强烈توصیه می‌کنم."</p>
+            <div class="testimonial-card__author">
+              <strong>رضا</strong>
+              <span>بنیان‌گذار استارتاپ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== FAQ ======================== -->
+    <section id="faq" class="faq section">
+      <div class="container">
+        <div class="faq__header" data-gsap="fade-up">
+          <span class="section__label">سوالات متداول</span>
+          <h2 class="section__heading">پاسخ به <span class="text-accent">سوالات شما</span></h2>
+        </div>
+        <div class="faq__list" data-gsap="fade-up">
+          <details class="faq__item">
+            <summary class="faq__question">هزینه طراحی چقدر است؟</summary>
+            <div class="faq__answer">
+              هزینه پروژه به پیچیدگی آن بستگی دارد. پس از جلسه کشف پروژه، برآوردی دقیق و شفاف ارائه می‌دهم. به عنوان پیشنهاد ویژه، ۲۰٪ تخفیف برای اولین پروژه‌تان دریافت کنید.
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">چقدر طول می‌کشد تا پروژه تحویل داده شود؟</summary>
+            <div class="faq__answer">
+              پروژه‌های معمول بسته به دامنه و پیچیدگی، ۲ تا ۶ هفته زمان می‌برند. در پیشنهاد، زمان‌بندی دقیقی ارائه می‌دهم تا دقیقاً بدانید چه انتظاری داشته باشید.
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">چرا باید به mamad_dev اعتماد کنم؟</summary>
+            <div class="faq__answer">
+              من بیش از ۴ سال تجربه برنامه‌نویسی، ۸ پروژه موفق و نرخ رضایت ۱۰۰٪ مشتریان دارم. علاوه بر این، ضمانت بازگشت وجه ارائه می‌دهم — اگر از کارم راضی نباشید، ۱۰۰٪ مبلغ پرداختی‌تان را برمی‌گردانم.
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">آیا کد تمیز و سئو-محور است؟</summary>
+            <div class="faq__answer">
+              قطعاً! کدی تمیز، معنایی و مستندسازی‌شده می‌نویسم. تمام وب‌سایت‌ها برای موتورهای جستجو با تگ‌های متا مناسب، HTML معنایی و زمان بارگذاری سریع بهینه شده‌اند.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== LEARNING TIMELINE ======================== -->
+    <section id="timeline" class="timeline section">
+      <div class="container">
+        <div class="timeline__header" data-gsap="fade-up">
+          <span class="section__label">مسیر یادگیری من</span>
+          <h2 class="section__heading">پیشرفت <span class="text-accent">تکنولوژی</span></h2>
+        </div>
+        <div class="timeline__list" data-gsap="fade-up">
+          <div class="timeline__item">
+            <div class="timeline__year">پایه</div>
+            <div class="timeline__content">
+              <h3>HTML و CSS</h3>
+              <p>با HTML معنایی و چیدمان‌های CSS واکنش‌گرا شروع کردم.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">فرانت‌اند</div>
+            <div class="timeline__content">
+              <h3>JavaScript</h3>
+              <p>JavaScript خالص، دستکاری DOM و ویژگی‌های ES6+ را یاد گرفتم.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">فریم‌ورک</div>
+            <div class="timeline__content">
+              <h3>React و Next.js</h3>
+              <p>اپلیکیشن‌های مدرن SPA و SSR را با اکوسیستم React ساختم.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__year">بک‌اند</div>
+            <div class="timeline__content">
+              <h3>Node.js و پایگاه داده</h3>
+              <p>توسعه فول‌استک با API، پایگاه داده و منطق سمت سرور.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== BLOG SECTION PLACEHOLDER ======================== -->
+    <section id="blog" class="blog section">
+      <div class="container">
+        <div class="blog__header" data-gsap="fade-up">
+          <span class="section__label">آخرین مقالات</span>
+          <h2 class="section__heading">از <span class="text-accent">وبلاگ</span></h2>
+        </div>
+        <div class="blog__grid">
+          <!-- TODO: Connect to CMS (Sanity/Contentful) -->
+          <div class="blog-card" data-gsap="fade-up">
+            <div class="blog-card__img">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop" alt="روندهای طراحی وب" loading="lazy">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__date">بهمن ۱۴۰۳</span>
+              <h3 class="blog-card__title">روندهای طراحی وب در سال ۲۰۲۵</h3>
+              <p class="blog-card__excerpt">آخرین روندهایی که طراحی وب مدرن را شکل می‌دهند را کشف کنید...</p>
+              <a href="#" class="blog-card__link">ادامه مطلب</a>
+            </div>
+          </div>
+          <div class="blog-card" data-gsap="fade-up">
+            <div class="blog-card__img">
+              <!-- TODO: convert to WebP with Squoosh for 70% size reduction -->
+              <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&h=250&fit=crop" alt="بهینه‌سازی سئو" loading="lazy">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__date">اسفند ۱۴۰۳</span>
+              <h3 class="blog-card__title">بهترین روش‌های سئو در سال ۲۰۲۵</h3>
+              <p class="blog-card__excerpt">یاد بگیرید چگونه وب‌سایت خود را برای موتورهای جستجو بهینه کنید...</p>
+              <a href="#" class="blog-card__link">ادامه مطلب</a>
+            </div>
+          </div>
+          <div class="blog-card" data-gsap="fade-up">
+            <div class="blog-card__img">
+              <!-- TODO: convert to WebP with Squoosh for 70% size reduction -->
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop" alt="طراحی واکنش‌گرا" loading="lazy">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__date">فروردین ۱۴۰۴</span>
+              <h3 class="blog-card__title">هنر طراحی واکنش‌گرا</h3>
+              <p class="blog-card__excerpt">تکنیک‌های ایجاد وب‌سایت‌های موبایل‌فرست را بیاموزید...</p>
+              <a href="#" class="blog-card__link">ادامه مطلب</a>
             </div>
           </div>
         </div>
@@ -198,7 +442,7 @@
         <div class="skills__inner">
           <div class="skills__header" data-gsap="fade-up">
             <span class="section__label">مهارت‌ها</span>
-            <h2 class="section__heading">توانمندی‌های <span class="text-accent">تخصصی</span></h2>
+            <h2 class="section__heading">تخصص‌های <span class="text-accent">من</span></h2>
           </div>
 
           <!-- Skills grid — populated dynamically from localStorage -->
@@ -213,8 +457,24 @@
     <section id="portfolio" class="portfolio section">
       <div class="container">
         <div class="portfolio__header" data-gsap="fade-up">
-          <span class="section__label">نمونه‌کارها</span>
-          <h2 class="section__heading">پروژه‌های <span class="text-accent">منتخب</span></h2>
+          <span class="section__label">نمونه کارها</span>
+          <h2 class="section__heading">پروژه‌های <span class="text-accent">برجسته</span></h2>
+          <!-- Portfolio filter tabs -->
+          <div class="portfolio__filters">
+            <button class="portfolio__filter active" data-filter="all">همه</button>
+            <button class="portfolio__filter" data-filter="E-commerce">فروشگاهی</button>
+            <button class="portfolio__filter" data-filter="Corporate">شرکتی</button>
+            <button class="portfolio__filter" data-filter="Landing Page">لندینگ پیج</button>
+          </div>
+        </div>
+
+        <!-- Discount banner -->
+        <div class="discount-banner" data-gsap="fade-up">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+          </svg>
+          <span>هزینه پروژه به پیچیدگی آن بستگی دارد. به عنوان پیشنهاد ویژه، <strong>۲۰٪ تخفیف</strong> برای اولین پروژه‌تان دریافت کنید.</span>
         </div>
 
         <!-- Portfolio grid — populated dynamically from localStorage -->
@@ -230,44 +490,59 @@
         <div class="contact__inner">
           <div class="contact__info" data-gsap="fade-up">
             <span class="section__label">تماس</span>
-            <h2 class="section__heading">انتقاد و <span class="text-accent">پیشنهاد</span></h2>
+            <h2 class="section__heading"><span class="text-accent">تماس با من</span></h2>
             <p class="contact__desc">
-              در صورت وجود هرگونه پیشنهاد، انتقاد یا درخواست همکاری،
-              <br>از طریق فرم زیر یا اطلاعات تماس در ارتباط باشید.
+              آیا پروژه‌ای در ذهن دارید؟ بیایید درباره اینکه چگونه می‌توانم دیدگاه شما را به واقعیت تبدیل کنم صحبت کنیم.
+              <br>فرم زیر را پر کنید یا مستقیماً با من در ارتباط باشید.
             </p>
             <ul class="contact__details">
               <li>
-                <span class="contact__detail-label">رایانامه</span>
-                <a href="mailto:info@mamad.dev" class="contact__detail-value" dir="ltr">info@mamad.dev</a>
+                <span class="contact__detail-label">ایمیل</span>
+                <a href="#" id="contact-email" class="contact__detail-value" dir="ltr"><!-- TODO: JS renders email --></a>
               </li>
               <li>
-                <span class="contact__detail-label">شماره تماس</span>
-                <a href="tel:+989024541458" class="contact__detail-value" dir="ltr">۰۹۰۲ ۴۵۴ ۱۴۵۸</a>
+                <span class="contact__detail-label">تلفن</span>
+                <a href="#" id="phone-el" class="contact__detail-value" dir="ltr"><!-- TODO: JS renders phone --></a>
               </li>
               <li>
                 <span class="contact__detail-label">موقعیت</span>
-                <span class="contact__detail-value">یزد، یزد</span>
+                <span class="contact__detail-value">یزد، ایران</span>
               </li>
             </ul>
+            <!-- Money-back guarantee badge -->
+            <div class="guarantee-badge">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+              <div class="guarantee-badge__text">
+                <strong>ضمانت ۱۰۰٪ بازگشت وجه</strong>
+                <span>اگر از کارم راضی نباشید، ۱۰۰٪ مبلغ پرداختی‌تان را برمی‌گردانم.</span>
+              </div>
+            </div>
           </div>
-          <form class="contact__form" id="contactForm" novalidate data-gsap="fade-left">
+          <!-- Netlify Forms integration -->
+          <form class="contact__form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="_honey" novalidate data-gsap="fade-left">
+            <input type="hidden" name="form-name" value="contact" />
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="form__field">
-              <label for="contactName" class="form__label">نام و نام خانوادگی</label>
+              <label for="contactName" class="form__label">نام کامل</label>
               <input type="text" id="contactName" name="name" class="form__input" placeholder="نام کامل خود را وارد کنید" required autocomplete="name">
               <span class="form__error" id="nameError"></span>
             </div>
             <div class="form__field">
-              <label for="contactEmail" class="form__label">نشانی رایانامه</label>
+              <label for="contactEmail" class="form__label">آدرس ایمیل</label>
               <input type="email" id="contactEmail" name="email" class="form__input" placeholder="name@example.com" required autocomplete="email" dir="ltr">
               <span class="form__error" id="emailError"></span>
             </div>
             <div class="form__field">
-              <label for="contactMessage" class="form__label">متن پیام</label>
-              <textarea id="contactMessage" name="message" class="form__input form__textarea" placeholder="پیام خود را بنویسید..." rows="5" required></textarea>
+              <label for="contactMessage" class="form__label">پیام شما</label>
+              <textarea id="contactMessage" name="message" class="form__input form__textarea" placeholder="درباره پروژه‌تان بگویید..." rows="5" required></textarea>
               <span class="form__error" id="messageError"></span>
             </div>
-            <button type="submit" class="btn btn--primary btn--submit" id="submitBtn">
-              <span class="btn__text">ارسال پیام</span>
+            <button type="submit" class="btn btn--primary btn--submit btn-cta" id="submitBtn">
+              <span class="btn__text">درخواست مشاوره رایگان</span>
               <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M14 2L7 9M14 2l-4 12-3-5-5-3 12-4z"/>
               </svg>
@@ -283,22 +558,39 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
-        <p class="footer__copy">© ۱۴۰۴ mamad dev — تمامی حقوق محفوظ است.</p>
+        <p class="footer__copy">© ۱۴۰۴ mamad_dev — تمام حقوق محفوظ است.</p>
         <div class="footer__links">
-          <a href="#" class="footer__link">GitHub</a>
-          <a href="#" class="footer__link">LinkedIn</a>
-          <a href="#" class="footer__link">Twitter</a>
+          <a href="https://github.com/mamad_dev" target="_blank" rel="noopener noreferrer" class="footer__link">گیت‌هاب</a>
+          <a href="#" class="footer__link">لینکدین</a>
+          <a href="#" class="footer__link">توییتر</a>
+          <a href="#" class="footer__link">اینستاگرام</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Floating Telegram button -->
+  <a
+    href="https://t.me/mama07d"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="telegram-float"
+    aria-label="تماس از طریق تلگرام"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+  </a>
+
   <!-- Back-to-top button -->
-  <button class="back-to-top" id="backToTop" aria-label="بازگشت به بالا" hidden>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" hidden>
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M10 16V4M4 10l6-6 6 6"/>
     </svg>
   </button>
+
+  <!-- Hidden H1 for SEO -->
+  <h1 class="sr-only">طراحی حرفه‌ای وب با mamad_dev</h1>
 
   <!-- ============================================================
        SCRIPTS — GSAP + Three.js from CDN

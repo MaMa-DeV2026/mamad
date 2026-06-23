@@ -44,7 +44,7 @@
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.error || 'خطا در ارتباط با سرور');
+        throw new Error(data.error || 'Connection error');
       }
       return data;
     } catch (error) {
@@ -64,46 +64,62 @@
    * Default data structure — used when API fails.
    */
   const DEFAULT_SKILLS = [
-    { id: 'ui-ux', name: 'طراحی UI/UX', percentage: 92 },
+    { id: 'ui-ux', name: 'UI/UX Design', percentage: 92 },
     { id: 'html-css', name: 'HTML & CSS', percentage: 95 },
     { id: 'javascript', name: 'JavaScript', percentage: 80 },
     { id: 'figma', name: 'Figma', percentage: 88 },
-    { id: 'responsive', name: 'طراحی ریسپانسیو', percentage: 90 },
+    { id: 'responsive', name: 'Responsive Design', percentage: 90 },
     { id: 'adobe-xd', name: 'Adobe XD', percentage: 75 },
   ];
 
   const DEFAULT_PROJECTS = [
     {
       id: 'proj-1',
-      title: 'Lumina — پنل مدیریت SaaS',
+      title: 'لومینا — پنل مدیریت SaaS',
       description: 'طراحی رابط کاربری برای یک پنل تحلیل داده با قابلیت نمایش اطلاعات لحظه‌ای و پشتیبانی از حالت تاریک.',
       tags: ['Figma', 'UI/UX', 'CSS'],
-      image: 'https://cdn.dribbble.com/userupload/43111624/file/original-52851378199548dd20f80f06ed4448b3.png?format=webp&resize=1000x750&vertical=center',
+      category: 'Corporate',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&h=750&fit=crop',
       link: '#',
+      challenge: 'مشتری به یک پلتفرم تحلیل داده پیچیده نیاز داشت که هم قدرتمند باشد و هم برای کاربران غیرفنی آسان باشد.',
+      solution: 'طراحی داشبوردی شهودی با نمایش لحظه‌ای داده‌ها، ویجت‌های قابل تنظیم و تجربه حالت تاریک.',
+      result: 'تعامل کاربر در اولین ماه پس از راه‌اندازی ۴۵٪ افزایش یافت.',
     },
     {
       id: 'proj-2',
-      title: 'Bloom — فروشگاه آنلاین گل',
+      title: 'بلوم — فروشگاه آنلاین گل',
       description: 'طراحی تجربه کاربری کامل برای یک فروشگاه اینترنتی با رویکرد موبایل‌فرست و انیمیشن‌های روان.',
       tags: ['HTML', 'CSS', 'JavaScript'],
-      image: 'https://cdn.dribbble.com/userupload/37233954/file/original-bbded23d0654a44bcdf825cc541142ef.png?format=webp&resize=800x600&vertical=center',
+      category: 'E-commerce',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
       link: '#',
+      challenge: 'یک گل‌فروشی به حضور آنلاینی نیاز داشت که با ظرافت برندش مطابقت داشته باشد و مدیریت آن آسان باشد.',
+      solution: 'ایجاد تجربه خرید آنلاین با رویکرد موبایل‌فرست، میکرواینتراکشن‌های روان و پنل مدیریت آسان.',
+      result: 'فروش آنلاین پس از راه‌اندازی وب‌سایت ۶۰٪ افزایش یافت.',
     },
     {
       id: 'proj-3',
-      title: 'Forge — وب‌سایت آژانس دیجیتال',
-      description: 'طراحی وب‌سایت معرفی برای یک آژانس دیجیتال با تمرکز بر تجربه اسکرول و هویت بصری قوی.',
+      title: 'فورج — وب‌سایت آژانس دیجیتال',
+      description: 'طراحی لندینگ پیج برای یک آژانس دیجیتال با تمرکز بر تجربه اسکرول و هویت بصری قوی.',
       tags: ['Figma', 'GSAP', 'CSS'],
-      image: 'https://cdn.dribbble.com/userupload/44350275/file/6eea7358e580c7821da3b941d08bb92d.png?format=webp&resize=1000x750&vertical=center',
+      category: 'Landing Page',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1000&h=750&fit=crop',
       link: '#',
+      challenge: 'یک آژانس دیجیتال می‌خواست وب‌سایتی داشته باشد که متمایز باشد و بازدیدکنندگان را به مشتری تبدیل کند.',
+      solution: 'ساخت لندینگ پیج جذاب با انیمیشن‌های محرک اسکرول، تایپوگرافی برجسته و مطالعات موردی جذاب.',
+      result: 'سرعت بارگذاری صفحه ۴۰٪ بهبود یافت و نرخ تبدیل دو برابر شد.',
     },
     {
       id: 'proj-4',
-      title: 'Zeno — وبلاگ شخصی',
+      title: 'زنو — وبلاگ شخصی',
       description: 'طراحی وبلاگ با رویکرد محتوامحور، خوانایی بالا و سرعت بارگذاری بهینه.',
       tags: ['UI Design', 'Typography', 'CSS'],
-      image: 'https://cdn.dribbble.com/userupload/8449020/file/original-86e598825b4c6e3b77afccfc3a37247c.png?resize=2048x1536&vertical=center',
+      category: 'Corporate',
+      image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1000&h=750&fit=crop',
       link: '#',
+      challenge: 'یک تولیدکننده محتوا به وبلاگی نیاز داشت که خوانایی و سرعت بارگذاری را در اولویت قرار دهد.',
+      solution: 'طراحی مینیمال و تایپوگرافی‌محور با تصاویر بهینه و بارگذاری تنبل.',
+      result: 'میانگین زمان بارگذاری صفحه به کمتر از ۱.۵ ثانیه کاهش یافت.',
     },
   ];
 
@@ -135,7 +151,7 @@
 
 
   // ============================================================
-  // 3. LOADING SCREEN — GSAP Timeline
+  // 3. LOADING SCREEN — GSAP Timeline (0.5s duration, skip for returning visitors)
   // ============================================================
 
   function initLoader() {
@@ -145,6 +161,20 @@
     // Check reduced motion — skip animation if user prefers it
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Check if returning visitor — skip loader entirely
+    const isReturningVisitor = sessionStorage.getItem('mamad_dev_visited') === 'true';
+
+    // Mark as visited
+    sessionStorage.setItem('mamad_dev_visited', 'true');
+
+    // Instant reveal for reduced-motion or returning visitors
+    if (prefersReduced || isReturningVisitor) {
+      gsap.set(loader, { display: 'none' });
+      loader.setAttribute('aria-hidden', 'true');
+      initHeroAnimations();
+      return;
+    }
+
     const tl = gsap.timeline({
       onComplete: () => {
         loader.setAttribute('aria-hidden', 'true');
@@ -153,15 +183,7 @@
       },
     });
 
-    if (prefersReduced) {
-      // Instant reveal for reduced-motion users
-      gsap.set(loader, { display: 'none' });
-      loader.setAttribute('aria-hidden', 'true');
-      initHeroAnimations();
-      return;
-    }
-
-    // Animate logo letters staggered in
+    // Animate logo letters staggered in (faster animation)
     tl.fromTo('.loader__logo-letter', {
       opacity: 0,
       y: 20,
@@ -170,66 +192,25 @@
       opacity: 1,
       y: 0,
       rotateX: 0,
-      duration: 0.6,
-      stagger: 0.15,
+      duration: 0.3,
+      stagger: 0.05,
       ease: 'back.out(1.7)',
     })
-    // Progress bar fill
+    // Progress bar fill (faster)
     .to('.loader__bar', {
       width: '100%',
-      duration: 1.5,
+      duration: 0.3,
       ease: 'power2.inOut',
-    }, '-=0.3')
-    // Fade out the entire loader
+    }, '-=0.1')
+    // Fade out the entire loader (0.5s total)
     .to(loader, {
       opacity: 0,
-      duration: 0.5,
+      duration: 0.2,
       ease: 'power2.inOut',
-    }, '+=0.3');
+    }, '+=0.1');
   }
 
-  // ============================================================
-  // 3. CUSTOM CURSOR
-  // ============================================================
-
-  function initCursor() {
-    // Skip on touch devices or reduced motion
-    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const cursor = document.getElementById('cursor');
-    if (!cursor) return;
-
-    const dot = cursor.querySelector('.cursor__dot');
-    const ring = cursor.querySelector('.cursor__ring');
-
-    // Both dot and ring follow mouse EXACTLY — positioned at mouse coordinates
-    document.addEventListener('mousemove', (e) => {
-      // Use left/top + translate(-50%, -50%) so center lands on cursor
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      gsap.set(dot, { x: 0, y: 0 });
-      gsap.set(ring, { x: 0, y: 0 });
-    });
-
-    // Expand ring on interactive elements
-    const interactiveSelectors = 'a, button, [role="button"], input, textarea, select, .project-card__inner, .skill-card';
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(interactiveSelectors)) {
-        cursor.classList.add('cursor--hover');
-      }
-    });
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(interactiveSelectors)) {
-        cursor.classList.remove('cursor--hover');
-      }
-    });
-
-    // Hide cursor when leaving the viewport
-    document.addEventListener('mouseleave', () => gsap.to(cursor, { opacity: 0, duration: 0.2 }));
-    document.addEventListener('mouseenter', () => gsap.to(cursor, { opacity: 1, duration: 0.2 }));
-  }
-
+  
   // ============================================================
   // 4. NAVIGATION — Hamburger + Overlay + GSAP Stagger
   // ============================================================
@@ -237,6 +218,7 @@
   function initNav() {
     const hamburger = document.getElementById('navHamburger');
     const overlay = document.getElementById('navOverlay');
+    const navMenu = document.getElementById('navMenu');
     const linkItems = document.querySelectorAll('.nav__link-item');
     const navLinks = document.querySelectorAll('.nav__link');
     let isOpen = false;
@@ -252,6 +234,10 @@
       overlay.setAttribute('aria-hidden', 'false');
       overlay.classList.add('nav__overlay--open');
       document.body.style.overflow = 'hidden';
+
+      // Keyboard focus trap — move focus to first link
+      const firstLink = navMenu.querySelector('.nav__link');
+      if (firstLink) firstLink.focus();
 
       // GSAP stagger: links animate in one by one
       gsap.fromTo(linkItems, {
@@ -291,6 +277,9 @@
       overlay.classList.remove('nav__overlay--open');
       document.body.style.overflow = '';
 
+      // Return focus to hamburger
+      hamburger.focus();
+
       gsap.to(linkItems, {
         opacity: 0,
         y: -20,
@@ -319,6 +308,31 @@
     // Click outside menu to close — on the overlay backdrop
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay && isOpen) closeNav();
+    });
+
+    // Keyboard focus trap — keep focus within menu when open
+    navMenu.addEventListener('keydown', (e) => {
+      if (!isOpen) return;
+
+      const focusableElements = navMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          // Shift + Tab: if on first element, go to last
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          // Tab: if on last element, go to first
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
     });
   }
 
@@ -917,8 +931,63 @@
   }
 
   // ============================================================
-  // 9. PORTFOLIO RENDERING + 3D TILT CARDS
+  // 9. PORTFOLIO RENDERING + 3D TILT CARDS + FILTER
   // ============================================================
+
+  /**
+   * Portfolio filter — filter projects by category
+   */
+  function initPortfolioFilter() {
+    const filterBtns = document.querySelectorAll('.portfolio__filter');
+    const portfolioGrid = document.getElementById('portfolioGrid');
+    if (!filterBtns.length || !portfolioGrid) return;
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active state
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter cards
+        const cards = portfolioGrid.querySelectorAll('.project-card');
+        cards.forEach((card) => {
+          const category = card.dataset.category || 'all';
+          const show = filter === 'all' || category === filter;
+          gsap.to(card, {
+            opacity: show ? 1 : 0,
+            scale: show ? 1 : 0.95,
+            duration: 0.3,
+            onComplete: () => {
+              card.style.display = show ? 'block' : 'none';
+            },
+          });
+        });
+      });
+    });
+  }
+
+  /**
+   * Obfuscate phone & email — build via JavaScript to prevent harvester bots
+   */
+  function initObfuscatedContact() {
+    // Phone number
+    const phoneEl = document.getElementById('phone-el');
+    if (phoneEl) {
+      const phone = ['0902', '454', '1458'].join('');
+      phoneEl.textContent = phone;
+      phoneEl.href = 'tel:+98' + phone;
+    }
+
+    // Email address
+    const emailEl = document.getElementById('contact-email');
+    if (emailEl) {
+      const email = ['info', '@', 'mamad', '_dev', '.com'].join('');
+      emailEl.textContent = email;
+      emailEl.href = 'mailto:' + email;
+    }
+  }
 
   function renderPortfolio() {
     const grid = document.getElementById('portfolioGrid');
@@ -927,15 +996,34 @@
     const projects = projectsData.length > 0 ? projectsData : DEFAULT_PROJECTS;
 
     grid.innerHTML = projects.map((project) => `
-      <article class="project-card" data-project-id="${project.id}">
+      <article class="project-card" data-project-id="${project.id}" data-category="${project.category || 'all'}">
         <div class="project-card__inner" data-tilt>
           <div class="project-card__img">
-            <img src="${project.image_url || project.image || ''}" alt="${project.title}" loading="lazy">
+            <!-- TODO: convert to WebP with Squoosh for 70% size reduction -->
+            <img src="${project.image_url || project.image || ''}" alt="${project.title} - ${project.category || 'Project'}" loading="lazy">
             <div class="project-card__overlay"></div>
           </div>
           <div class="project-card__body">
             <h3 class="project-card__title">${project.title}</h3>
             <p class="project-card__desc">${project.description}</p>
+            ${project.challenge ? `
+            <div class="project-card__case-study">
+              <div class="case-study__item">
+                <span class="case-study__label">Challenge:</span>
+                <span class="case-study__text">${project.challenge}</span>
+              </div>
+              <div class="case-study__item">
+                <span class="case-study__label">Solution:</span>
+                <span class="case-study__text">${project.solution}</span>
+              </div>
+              ${project.result ? `
+              <div class="case-study__item case-study__result">
+                <span class="case-study__label">Result:</span>
+                <span class="case-study__text">${project.result}</span>
+              </div>
+              ` : ''}
+            </div>
+            ` : ''}
             <div class="project-card__tags">
               ${(project.tags || []).map((tag) => `<span class="project-card__tag">${tag}</span>`).join('')}
             </div>
@@ -1034,8 +1122,42 @@
   }
 
   // ============================================================
-  // 10. CONTACT FORM VALIDATION
+  // 10. CONTACT FORM VALIDATION & SUBMISSION
   // ============================================================
+
+  /**
+   * handleFormSubmit — standalone function ready to be wired to Supabase/Firebase
+   * @param {Object} formData - { name, email, message }
+   * @returns {Object} { success: boolean, message: string }
+   */
+  async function handleFormSubmit(formData) {
+    // TODO: Wire to Supabase/Firebase when backend is ready
+    // Example Supabase integration:
+    // const { data, error } = await supabase.from('contact_messages').insert([formData]);
+    // if (error) throw error;
+    // return { success: true, message: 'Message saved to database!' };
+
+    // Submit via Netlify Forms
+    const form = document.getElementById('contactForm');
+    const formDataEncoded = new FormData(form);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataEncoded).toString(),
+      });
+
+      if (response.ok) {
+        return { success: true, message: 'Message sent successfully!' };
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      throw error;
+    }
+  }
 
   function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -1047,24 +1169,24 @@
       contactName: {
         errorEl: document.getElementById('nameError'),
         validate(val) {
-          if (!val.trim()) return 'وارد کردن نام الزامی است.';
-          if (val.trim().length < 2) return 'نام وارد‌شده معتبر نمی‌باشد.';
+          if (!val.trim()) return 'نام الزامی است.';
+          if (val.trim().length < 2) return 'لطفاً نام معتبر وارد کنید.';
           return '';
         },
       },
       contactEmail: {
         errorEl: document.getElementById('emailError'),
         validate(val) {
-          if (!val.trim()) return 'وارد کردن نشانی رایانامه الزامی است.';
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return 'نشانی رایانامه معتبر نمی‌باشد.';
+          if (!val.trim()) return 'ایمیل الزامی است.';
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return 'لطفاً ایمیل معتبر وارد کنید.';
           return '';
         },
       },
       contactMessage: {
         errorEl: document.getElementById('messageError'),
         validate(val) {
-          if (!val.trim()) return 'متن پیام نمی‌تواند خالی باشد.';
-          if (val.trim().length < 10) return 'پیام باید حداقل شامل ده کاراکتر باشد.';
+          if (!val.trim()) return 'پیام نمی‌تواند خالی باشد.';
+          if (val.trim().length < 10) return 'پیام باید حداقل ۱۰ کاراکتر باشد.';
           return '';
         },
       },
@@ -1102,7 +1224,7 @@
 
       if (hasError) return;
 
-      // Submit to API
+      // Submit using standalone function
       const btnText = submitBtn.querySelector('.btn__text');
       const originalText = btnText.textContent;
       btnText.textContent = 'در حال ارسال...';
@@ -1114,21 +1236,19 @@
         message: document.getElementById('contactMessage').value.trim(),
       };
 
-      const result = await fetchAPI('/api/contact', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-      });
-
-      if (result && result.success) {
-        btnText.textContent = '✓ پیام ارسال شد';
-        form.reset();
-        Object.entries(fields).forEach(([id, field]) => {
-          const input = document.getElementById(id);
-          input.classList.remove('valid', 'invalid');
-          if (field.errorEl) field.errorEl.textContent = '';
-        });
-      } else {
-        btnText.textContent = 'خطا در ارسال';
+      try {
+        const result = await handleFormSubmit(formData);
+        if (result.success) {
+          btnText.textContent = '✓ پیام ارسال شد!';
+          form.reset();
+          Object.entries(fields).forEach(([id, field]) => {
+            const input = document.getElementById(id);
+            input.classList.remove('valid', 'invalid');
+            if (field.errorEl) field.errorEl.textContent = '';
+          });
+        }
+      } catch (error) {
+        btnText.textContent = 'خطا';
         showFieldError(
           document.getElementById('messageError'),
           'خطا در ارسال پیام. لطفاً دوباره تلاش کنید.'
@@ -1146,9 +1266,17 @@
    * showFieldError — update error message and input class.
    */
   function showFieldError(input, errorEl, msg) {
-    if (errorEl) errorEl.textContent = msg;
-    input.classList.toggle('invalid', !!msg);
-    input.classList.toggle('valid', !msg && input.value.trim() !== '');
+    if (typeof errorEl === 'string') {
+      // Handle case where errorEl is the element directly
+      const el = document.getElementById('messageError');
+      if (el) el.textContent = errorEl;
+    } else if (errorEl) {
+      errorEl.textContent = msg;
+    }
+    if (input) {
+      input.classList.toggle('invalid', !!msg);
+      input.classList.toggle('valid', !msg && input.value.trim() !== '');
+    }
   }
 
   // ============================================================
@@ -1191,7 +1319,6 @@
 
     // Initialize UI components
     initLoader();
-    initCursor();
     initNav();
     initThreeJS();
     initScrollAnimations();
@@ -1200,6 +1327,8 @@
     initActiveNavLinks();
     initContactForm();
     initSmoothScroll();
+    initPortfolioFilter();
+    initObfuscatedContact();
   }
 
   // Wait for DOM + all scripts (GSAP, Three.js) to load

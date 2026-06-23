@@ -62,15 +62,15 @@
           // Token invalid or expired
           removeToken();
           showLogin();
-          showToast('نشست منقضی شده. لطفاً دوباره وارد شوید.', 'error');
+          showToast('Session expired. Please login again.', 'error');
         }
-        throw new Error(data.error || 'خطا در ارتباط با سرور');
+        throw new Error(data.error || 'Connection error');
       }
 
       return data;
     } catch (error) {
       console.error('[API] Error:', error);
-      showToast(error.message || 'خطا در ارتباط با سرور', 'error');
+      showToast(error.message || 'Connection error', 'error');
       return null;
     }
   }
@@ -123,7 +123,7 @@
 
     if (result && result.success) {
       setToken(result.token);
-      showToast('خوش اومدی! 👋', 'success');
+      showToast('Welcome! 👋', 'success');
       showDashboard();
       return true;
     }
@@ -136,7 +136,7 @@
   async function logout() {
     await fetchAPI('/api/admin/logout', { method: 'POST' });
     removeToken();
-    showToast('با موفقیت خارج شدی', 'success');
+    showToast('Logged out successfully', 'success');
     showLogin();
   }
 
@@ -231,9 +231,9 @@
     if (projectsData.length === 0) {
       container.innerHTML = `
         <div class="empty-state">
-          <p>هنوز پروژه‌ای اضافه نکردی.</p>
+          <p>No projects added yet.</p>
           <button class="btn btn--primary btn--sm" onclick="document.getElementById('addProjectBtn').click()">
-            اولین پروژه رو اضافه کن
+            Add Your First Project
           </button>
         </div>
       `;
@@ -256,10 +256,10 @@
           </div>
           <div class="project-item__actions">
             <button class="btn btn--outline btn--sm btn--edit-project" data-id="${project.id}">
-              ویرایش
+              Edit
             </button>
             <button class="btn btn--danger btn--sm btn--delete-project" data-id="${project.id}">
-              حذف
+              Delete
             </button>
           </div>
         </div>
@@ -283,7 +283,7 @@
   }
 
   function defaultProjectSVG(title) {
-    const encodedTitle = encodeURIComponent(title || 'پروژه');
+    const encodedTitle = encodeURIComponent(title || 'Project');
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
       <rect fill="#292524" width="800" height="450"/>
       <rect x="40" y="40" width="720" height="300" rx="12" fill="#44403c" opacity="0.3"/>
@@ -299,12 +299,12 @@
   }
 
   async function deleteProject(id) {
-    if (!confirm('مطمئنی می‌خوای این پروژه رو حذف کنی؟')) return;
+    if (!confirm('Are you sure you want to delete this project?')) return;
 
     const result = await fetchAPI(`/api/portfolio/${id}`, { method: 'DELETE' });
 
     if (result && result.success) {
-      showToast('پروژه حذف شد', 'success');
+      showToast('Project deleted', 'success');
       loadProjects();
     }
   }
@@ -368,7 +368,7 @@
       }
 
       if (result && result.success) {
-        showToast(isEdit ? 'پروژه ویرایش شد ✅' : 'پروژه جدید اضافه شد 🎉', 'success');
+        showToast(isEdit ? 'Project updated ✅' : 'New project added 🎉', 'success');
         closeModal();
         loadProjects();
       }
@@ -378,7 +378,7 @@
   function openNewModal() {
     const modal = document.getElementById('projectModal');
     document.getElementById('projId').value = '';
-    document.getElementById('modalTitle').textContent = 'پروژه جدید';
+    document.getElementById('modalTitle').textContent = 'New Project';
     document.getElementById('projectForm').reset();
     clearFormErrors();
     modal.hidden = false;
@@ -390,7 +390,7 @@
 
     const modal = document.getElementById('projectModal');
     document.getElementById('projId').value = project.id;
-    document.getElementById('modalTitle').textContent = 'ویرایش پروژه';
+    document.getElementById('modalTitle').textContent = 'Edit Project';
     document.getElementById('projTitle').value = project.title;
     document.getElementById('projDesc').value = project.description;
     document.getElementById('projTags').value = (project.tags || []).join(', ');
@@ -408,13 +408,13 @@
     const desc = document.getElementById('projDesc');
 
     if (!title.value.trim()) {
-      showFieldError('projTitleError', 'عنوان پروژه الزامیه');
+      showFieldError('projTitleError', 'Project title is required');
       title.classList.add('invalid');
       valid = false;
     }
 
     if (!desc.value.trim()) {
-      showFieldError('projDescError', 'توضیحات الزامیه');
+      showFieldError('projDescError', 'Description is required');
       desc.classList.add('invalid');
       valid = false;
     }
@@ -446,7 +446,7 @@
     if (!container) return;
 
     if (skillsData.length === 0) {
-      container.innerHTML = '<p class="empty-state">هنوز مهارتی اضافه نکردی.</p>';
+      container.innerHTML = '<p class="empty-state">No skills added yet.</p>';
       return;
     }
 
@@ -460,7 +460,7 @@
           min="0"
           max="100"
           data-skill-id="${skill.id}"
-          aria-label="درصد مهارت ${escapeHtml(skill.name)}"
+          aria-label="Skill percentage for ${escapeHtml(skill.name)}"
         >
         <div class="skill-item__bar">
           <div class="skill-item__fill" style="width: ${skill.percentage}%"></div>
@@ -501,7 +501,7 @@
         fill.style.width = value + '%';
       }
 
-      showToast(`مهارت بروزرسانی شد → ${value}%`, 'success');
+      showToast(`Skill updated to ${value}%`, 'success');
     }
   }
 
@@ -514,7 +514,7 @@
     if (!container) return;
 
     if (messagesData.length === 0) {
-      container.innerHTML = '<p class="empty-state">هنوز پیامی دریافت نشده.</p>';
+      container.innerHTML = '<p class="empty-state">No messages received yet.</p>';
       return;
     }
 
@@ -528,8 +528,8 @@
           </div>
           <div class="message-item__status">
             ${msg.is_read
-              ? '<span class="badge badge--read">خوانده شده</span>'
-              : '<span class="badge badge--unread">جدید</span>'
+              ? '<span class="badge badge--read">Read</span>'
+              : '<span class="badge badge--unread">New</span>'
             }
           </div>
         </div>
@@ -539,11 +539,11 @@
         <div class="message-item__actions">
           ${!msg.is_read ? `
             <button class="btn btn--outline btn--sm btn--mark-read" data-id="${msg.id}">
-              علامت به عنوان خوانده
+              Mark as Read
             </button>
           ` : ''}
           <button class="btn btn--danger btn--sm btn--delete-message" data-id="${msg.id}">
-            حذف
+            Delete
           </button>
         </div>
       </div>
@@ -562,7 +562,7 @@
   function formatDate(dateStr) {
     if (!dateStr) return '';
     const date = new Date(dateStr);
-    return date.toLocaleDateString('fa-IR', {
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -574,17 +574,17 @@
   async function markMessageRead(id) {
     const result = await fetchAPI(`/api/messages/${id}/read`, { method: 'PUT' });
     if (result && result.success) {
-      showToast('پیام به عنوان خوانده علامت‌گذاری شد', 'success');
+      showToast('Message marked as read', 'success');
       loadMessages();
     }
   }
 
   async function deleteMessage(id) {
-    if (!confirm('مطمئنی می‌خوای این پیام رو حذف کنی؟')) return;
+    if (!confirm('Are you sure you want to delete this message?')) return;
 
     const result = await fetchAPI(`/api/messages/${id}`, { method: 'DELETE' });
     if (result && result.success) {
-      showToast('پیام حذف شد', 'success');
+      showToast('Message deleted', 'success');
       loadMessages();
     }
   }
@@ -632,17 +632,17 @@
         const globalError = document.getElementById('loginGlobalError');
 
         if (!username) {
-          document.getElementById('loginUserError').textContent = 'نام کاربری الزامیه';
+          document.getElementById('loginUserError').textContent = 'Username is required';
           return;
         }
         if (!password) {
-          document.getElementById('loginPassError').textContent = 'رمز عبور الزامیه';
+          document.getElementById('loginPassError').textContent = 'Password is required';
           return;
         }
 
         const success = await login(username, password);
         if (!success) {
-          globalError.textContent = 'نام کاربری یا رمز عبور اشتباهه';
+          globalError.textContent = 'Invalid username or password';
         }
       });
     }

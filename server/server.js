@@ -41,7 +41,7 @@ function authenticateToken(req, res, next) {
   const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
   if (!token) {
-    return res.status(401).json({ error: 'توکن احراز هویت یافت نشد' });
+    return res.status(401).json({ error: 'Authentication token not found' });
   }
 
   try {
@@ -49,7 +49,7 @@ function authenticateToken(req, res, next) {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(403).json({ error: 'توکن نامعتبر یا منقضی شده' });
+    return res.status(403).json({ error: 'Invalid or expired token' });
   }
 }
 
@@ -83,7 +83,7 @@ app.get('/api/portfolio', (req, res) => {
     res.json({ success: true, data: parsed });
   } catch (err) {
     console.error('[API] GET /api/portfolio error:', err);
-    res.status(500).json({ error: 'خطا در دریافت پروژه‌ها' });
+    res.status(500).json({ error: 'Error fetching projects' });
   }
 });
 
@@ -93,7 +93,7 @@ app.post('/api/portfolio', authenticateToken, (req, res) => {
     const { title, description, tags, image_url, link } = req.body;
 
     if (!title || !title.trim()) {
-      return res.status(400).json({ error: 'عنوان پروژه الزامی است' });
+      return res.status(400).json({ error: 'Project title is required' });
     }
 
     const id = 'proj-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -117,7 +117,7 @@ app.post('/api/portfolio', authenticateToken, (req, res) => {
     res.status(201).json({ success: true, data: newProject });
   } catch (err) {
     console.error('[API] POST /api/portfolio error:', err);
-    res.status(500).json({ error: 'خطا در افزودن پروژه' });
+    res.status(500).json({ error: 'Error adding project' });
   }
 });
 
@@ -129,7 +129,7 @@ app.put('/api/portfolio/:id', authenticateToken, (req, res) => {
 
     const existing = db.prepare('SELECT * FROM portfolio_items WHERE id = ?').get(id);
     if (!existing) {
-      return res.status(404).json({ error: 'پروژه یافت نشد' });
+      return res.status(404).json({ error: 'Project not found' });
     }
 
     const tagsJson = JSON.stringify(Array.isArray(tags) ? tags : JSON.parse(existing.tags || '[]'));
@@ -153,7 +153,7 @@ app.put('/api/portfolio/:id', authenticateToken, (req, res) => {
     res.json({ success: true, data: updated });
   } catch (err) {
     console.error('[API] PUT /api/portfolio error:', err);
-    res.status(500).json({ error: 'خطا در ویرایش پروژه' });
+    res.status(500).json({ error: 'Error updating project' });
   }
 });
 
@@ -164,15 +164,15 @@ app.delete('/api/portfolio/:id', authenticateToken, (req, res) => {
 
     const existing = db.prepare('SELECT * FROM portfolio_items WHERE id = ?').get(id);
     if (!existing) {
-      return res.status(404).json({ error: 'پروژه یافت نشد' });
+      return res.status(404).json({ error: 'Project not found' });
     }
 
     db.prepare('DELETE FROM portfolio_items WHERE id = ?').run(id);
 
-    res.json({ success: true, message: 'پروژه حذف شد' });
+    res.json({ success: true, message: 'Project deleted' });
   } catch (err) {
     console.error('[API] DELETE /api/portfolio error:', err);
-    res.status(500).json({ error: 'خطا در حذف پروژه' });
+    res.status(500).json({ error: 'Error deleting project' });
   }
 });
 
@@ -187,7 +187,7 @@ app.get('/api/skills', (req, res) => {
     res.json({ success: true, data: skills });
   } catch (err) {
     console.error('[API] GET /api/skills error:', err);
-    res.status(500).json({ error: 'خطا در دریافت مهارت‌ها' });
+    res.status(500).json({ error: 'Error fetching skills' });
   }
 });
 
@@ -197,7 +197,7 @@ app.post('/api/skills', authenticateToken, (req, res) => {
     const { name, percentage, order_index } = req.body;
 
     if (!name || !name.trim()) {
-      return res.status(400).json({ error: 'نام مهارت الزامی است' });
+      return res.status(400).json({ error: 'Skill name is required' });
     }
 
     const id = 'skill-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -220,7 +220,7 @@ app.post('/api/skills', authenticateToken, (req, res) => {
     res.status(201).json({ success: true, data: newSkill });
   } catch (err) {
     console.error('[API] POST /api/skills error:', err);
-    res.status(500).json({ error: 'خطا در افزودن مهارت' });
+    res.status(500).json({ error: 'Error adding skill' });
   }
 });
 
@@ -232,7 +232,7 @@ app.put('/api/skills/:id', authenticateToken, (req, res) => {
 
     const existing = db.prepare('SELECT * FROM skills WHERE id = ?').get(id);
     if (!existing) {
-      return res.status(404).json({ error: 'مهارت یافت نشد' });
+      return res.status(404).json({ error: 'Skill not found' });
     }
 
     const percent = Math.max(0, Math.min(100, parseInt(percentage) ?? existing.percentage));
@@ -253,7 +253,7 @@ app.put('/api/skills/:id', authenticateToken, (req, res) => {
     res.json({ success: true, data: updated });
   } catch (err) {
     console.error('[API] PUT /api/skills error:', err);
-    res.status(500).json({ error: 'خطا در ویرایش مهارت' });
+    res.status(500).json({ error: 'Error updating skill' });
   }
 });
 
@@ -264,15 +264,15 @@ app.delete('/api/skills/:id', authenticateToken, (req, res) => {
 
     const existing = db.prepare('SELECT * FROM skills WHERE id = ?').get(id);
     if (!existing) {
-      return res.status(404).json({ error: 'مهارت یافت نشد' });
+      return res.status(404).json({ error: 'Skill not found' });
     }
 
     db.prepare('DELETE FROM skills WHERE id = ?').run(id);
 
-    res.json({ success: true, message: 'مهارت حذف شد' });
+    res.json({ success: true, message: 'Skill deleted' });
   } catch (err) {
     console.error('[API] DELETE /api/skills error:', err);
-    res.status(500).json({ error: 'خطا در حذف مهارت' });
+    res.status(500).json({ error: 'Error deleting skill' });
   }
 });
 
@@ -287,16 +287,16 @@ app.post('/api/contact', (req, res) => {
 
     // Validation
     if (!name || !name.trim()) {
-      return res.status(400).json({ error: 'نام الزامی است' });
+      return res.status(400).json({ error: 'Name is required' });
     }
     if (!email || !email.trim()) {
-      return res.status(400).json({ error: 'ایمیل الزامی است' });
+      return res.status(400).json({ error: 'Email is required' });
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return res.status(400).json({ error: 'ایمیل نامعتبر است' });
+      return res.status(400).json({ error: 'Invalid email address' });
     }
     if (!message || !message.trim()) {
-      return res.status(400).json({ error: 'پیام الزامی است' });
+      return res.status(400).json({ error: 'Message is required' });
     }
 
     db.prepare(`
@@ -304,10 +304,10 @@ app.post('/api/contact', (req, res) => {
       VALUES (?, ?, ?)
     `).run(name.trim(), email.trim(), message.trim());
 
-    res.status(201).json({ success: true, message: 'پیام شما با موفقیت ارسال شد' });
+    res.status(201).json({ success: true, message: 'Message sent successfully' });
   } catch (err) {
     console.error('[API] POST /api/contact error:', err);
-    res.status(500).json({ error: 'خطا در ارسال پیام' });
+    res.status(500).json({ error: 'Error sending message' });
   }
 });
 
@@ -318,7 +318,7 @@ app.get('/api/messages', authenticateToken, (req, res) => {
     res.json({ success: true, data: messages });
   } catch (err) {
     console.error('[API] GET /api/messages error:', err);
-    res.status(500).json({ error: 'خطا در دریافت پیام‌ها' });
+    res.status(500).json({ error: 'Error fetching messages' });
   }
 });
 
@@ -329,15 +329,15 @@ app.put('/api/messages/:id/read', authenticateToken, (req, res) => {
 
     const existing = db.prepare('SELECT * FROM messages WHERE id = ?').get(id);
     if (!existing) {
-      return res.status(404).json({ error: 'پیام یافت نشد' });
+      return res.status(404).json({ error: 'Message not found' });
     }
 
     db.prepare('UPDATE messages SET is_read = 1 WHERE id = ?').run(id);
 
-    res.json({ success: true, message: 'پیام به عنوان خوانده شده علامت‌گذاری شد' });
+    res.json({ success: true, message: 'Message marked as read' });
   } catch (err) {
     console.error('[API] PUT /api/messages/read error:', err);
-    res.status(500).json({ error: 'خطا در بروزرسانی پیام' });
+    res.status(500).json({ error: 'Error updating message' });
   }
 });
 
@@ -348,15 +348,15 @@ app.delete('/api/messages/:id', authenticateToken, (req, res) => {
 
     const existing = db.prepare('SELECT * FROM messages WHERE id = ?').get(id);
     if (!existing) {
-      return res.status(404).json({ error: 'پیام یافت نشد' });
+      return res.status(404).json({ error: 'Message not found' });
     }
 
     db.prepare('DELETE FROM messages WHERE id = ?').run(id);
 
-    res.json({ success: true, message: 'پیام حذف شد' });
+    res.json({ success: true, message: 'Message deleted' });
   } catch (err) {
     console.error('[API] DELETE /api/messages error:', err);
-    res.status(500).json({ error: 'خطا در حذف پیام' });
+    res.status(500).json({ error: 'Error deleting message' });
   }
 });
 
@@ -370,13 +370,13 @@ app.post('/api/admin/login', (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-      return res.status(400).json({ error: 'نام کاربری و رمز عبور الزامی است' });
+      return res.status(400).json({ error: 'Username and password are required' });
     }
 
     const user = db.prepare('SELECT * FROM admin_users WHERE username = ?').get(username);
 
     if (!user || !bcrypt.compareSync(password, user.password_hash)) {
-      return res.status(401).json({ error: 'نام کاربری یا رمز عبور اشتباه است' });
+      return res.status(401).json({ error: 'Invalid username or password' });
     }
 
     // Generate JWT token
@@ -393,13 +393,13 @@ app.post('/api/admin/login', (req, res) => {
     });
   } catch (err) {
     console.error('[API] POST /api/admin/login error:', err);
-    res.status(500).json({ error: 'خطا در ورود' });
+    res.status(500).json({ error: 'Login error' });
   }
 });
 
 // POST /api/admin/logout — Logout (client-side token removal)
 app.post('/api/admin/logout', authenticateToken, (req, res) => {
-  res.json({ success: true, message: 'با موفقیت خارج شدید' });
+  res.json({ success: true, message: 'Logged out successfully' });
 });
 
 // GET /api/admin/verify — Verify token validity
@@ -423,13 +423,13 @@ app.get('/admin', (req, res) => {
 
 // 404 handler
 app.use((req, res) => {
-  res.status(404).json({ error: 'صفحه یافت نشد' });
+  res.status(404).json({ error: 'Page not found' });
 });
 
 // Error handler
 app.use((err, req, res, next) => {
   console.error('[Server] Unhandled error:', err);
-  res.status(500).json({ error: 'خطای سرور' });
+  res.status(500).json({ error: 'Server error' });
 });
 
 // ============================================================

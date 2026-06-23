@@ -1,0 +1,13 @@
+# Netlify cache headers for optimized asset delivery
+
+# Cache hashed assets (JS, CSS) for 1 year
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache CSS files
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache JS files
+/*.js
+  Cache-Control: public, max-age=31536000, immutable

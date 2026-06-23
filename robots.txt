@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mamadweb.netlify.app/sitemap.xml
