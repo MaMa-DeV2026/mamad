@@ -143,8 +143,17 @@
   }
 
   function createLanguageSwitcher() {
-    if (document.querySelector('.lang-switcher')) return;
+    const existingButton = document.querySelector('.lang-switcher');
+    if (existingButton) {
+      // Button already exists in HTML, just add click handler
+      existingButton.addEventListener('click', () => {
+        const newLang = currentLanguage === 'fa' ? 'en' : 'fa';
+        setLanguage(newLang);
+      });
+      return;
+    }
 
+    // Fallback: create button if it doesn't exist
     const button = document.createElement('button');
     button.className = 'lang-switcher';
     button.setAttribute('type', 'button');
@@ -156,9 +165,9 @@
       setLanguage(newLang);
     });
 
-    const nav = document.querySelector('.nav');
-    if (nav) {
-      nav.appendChild(button);
+    const controls = document.querySelector('.nav__controls');
+    if (controls) {
+      controls.prepend(button);
     }
   }
 
