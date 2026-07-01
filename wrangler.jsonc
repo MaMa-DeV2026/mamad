@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mamad-portfolio",
+  "compatibility_date": "2026-07-01",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "exclude": ["node_modules/**", ".git/**", "server/**", "*.bat", "*.md", ".env*", "wrangler.jsonc", "netlify.toml"]
+  },
+  "compatibility_flags": ["nodejs_compat"]
+}
