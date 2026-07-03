@@ -2633,7 +2633,7 @@ button { font-family: inherit; }
 
   /* Hero outline button on dark background - white border/text */
   .hero .btn--outline {
-    color: #ffffff;
+    color:  #f97316;
     border-color: rgba(255, 255, 255, 0.4);
   }
 
