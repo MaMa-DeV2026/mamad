@@ -983,7 +983,7 @@
     // Email address
     const emailEl = document.getElementById('contact-email');
     if (emailEl) {
-      const email = ['info', '@', 'mamad', '_dev', '.com'].join('');
+      const email = ['mamad', 'dev', '6', '@gmail', '.com'].join('');
       emailEl.textContent = email;
       emailEl.href = 'mailto:' + email;
     }
